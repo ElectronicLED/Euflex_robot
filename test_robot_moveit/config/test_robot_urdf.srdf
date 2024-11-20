@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="test_robot_urdf">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="Lleg_group">
+        <joint name="LHip_roll"/>
+        <joint name="LHip_pitch"/>
+        <joint name="LKnee_pitch"/>
+        <joint name="LAnkle_roll"/>
+    </group>
+    <group name="Rarm_group">
+        <joint name="RElbow_pitch"/>
+        <joint name="RShoulder_roll"/>
+        <joint name="RShoulder_pitch"/>
+    </group>
+    <group name="Larm_group">
+        <joint name="LShoulder_pitch"/>
+        <joint name="LShoulder_roll"/>
+        <joint name="LElbow_pitch"/>
+    </group>
+    <group name="Rleg_group">
+        <joint name="RAnkle_roll"/>
+        <joint name="RKnee_pitch"/>
+        <joint name="RHip_pitch"/>
+        <joint name="RHip_roll"/>
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="Rarm_pose_0" group="Rarm_group">
+        <joint name="RElbow_pitch" value="0"/>
+        <joint name="RShoulder_pitch" value="0"/>
+        <joint name="RShoulder_roll" value="0"/>
+    </group_state>
+    <group_state name="Larm_pose_0" group="Larm_group">
+        <joint name="LElbow_pitch" value="0"/>
+        <joint name="LShoulder_pitch" value="0"/>
+        <joint name="LShoulder_roll" value="0"/>
+    </group_state>
+    <group_state name="Rleg_walk_0" group="Rleg_group">
+        <joint name="RAnkle_roll" value="-0.0849"/>
+        <joint name="RHip_pitch" value="-0.2475"/>
+        <joint name="RHip_roll" value="-0.0778"/>
+        <joint name="RKnee_pitch" value="0.3536"/>
+    </group_state>
+    <group_state name="Lleg_walk0" group="Lleg_group">
+        <joint name="LAnkle_roll" value="0.0849"/>
+        <joint name="LHip_pitch" value="0.7991"/>
+        <joint name="LHip_roll" value="-0.0707"/>
+        <joint name="LKnee_pitch" value="-0.8486"/>
+    </group_state>
+    <group_state name="hi_0" group="Rarm_group">
+        <joint name="RElbow_pitch" value="0"/>
+        <joint name="RShoulder_pitch" value="0"/>
+        <joint name="RShoulder_roll" value="2.5263"/>
+    </group_state>
+    <group_state name="hi_1" group="Rarm_group">
+        <joint name="RElbow_pitch" value="0"/>
+        <joint name="RShoulder_pitch" value="0"/>
+        <joint name="RShoulder_roll" value="3.142"/>
+    </group_state>
+    <group_state name="Rleg_pose_0" group="Rleg_group">
+        <joint name="RAnkle_roll" value="-0.0283"/>
+        <joint name="RHip_pitch" value="0.0636"/>
+        <joint name="RHip_roll" value="-0.0212"/>
+        <joint name="RKnee_pitch" value="-0.0141"/>
+    </group_state>
+    <group_state name="Lleg_pose_0" group="Lleg_group">
+        <joint name="LAnkle_roll" value="0.0283"/>
+        <joint name="LHip_pitch" value="0.0707"/>
+        <joint name="LHip_roll" value="-0.0424"/>
+        <joint name="LKnee_pitch" value="-0.0424"/>
+    </group_state>
+    <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
+    <end_effector name="R_hand_ee" parent_link="RHumerus" group="Rarm_group"/>
+    <end_effector name="L_hand_ee" parent_link="LHumerus" group="Larm_group"/>
+    <end_effector name="R_foot_ee" parent_link="RTibia" group="Rleg_group"/>
+    <end_effector name="L_foot_ee" parent_link="LHumerus" group="Lleg_group"/>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="LFemur" link2="LLeg" reason="Adjacent"/>
+    <disable_collisions link1="LFemur" link2="LShoulder" reason="Never"/>
+    <disable_collisions link1="LFemur" link2="LTibia" reason="Adjacent"/>
+    <disable_collisions link1="LFemur" link2="RShoulder" reason="Never"/>
+    <disable_collisions link1="LFemur" link2="face" reason="Never"/>
+    <disable_collisions link1="LFoot" link2="LForearm" reason="Never"/>
+    <disable_collisions link1="LFoot" link2="LLeg" reason="Never"/>
+    <disable_collisions link1="LFoot" link2="LShoulder" reason="Never"/>
+    <disable_collisions link1="LFoot" link2="LTibia" reason="Adjacent"/>
+    <disable_collisions link1="LFoot" link2="RShoulder" reason="Never"/>
+    <disable_collisions link1="LFoot" link2="face" reason="Never"/>
+    <disable_collisions link1="LForearm" link2="LHumerus" reason="Adjacent"/>
+    <disable_collisions link1="LForearm" link2="LShoulder" reason="Never"/>
+    <disable_collisions link1="LForearm" link2="RForearm" reason="Never"/>
+    <disable_collisions link1="LForearm" link2="RHumerus" reason="Never"/>
+    <disable_collisions link1="LForearm" link2="RLeg" reason="Never"/>
+    <disable_collisions link1="LForearm" link2="RShoulder" reason="Never"/>
+    <disable_collisions link1="LForearm" link2="face" reason="Never"/>
+    <disable_collisions link1="LHumerus" link2="LShoulder" reason="Adjacent"/>
+    <disable_collisions link1="LHumerus" link2="RForearm" reason="Never"/>
+    <disable_collisions link1="LHumerus" link2="RHumerus" reason="Never"/>
+    <disable_collisions link1="LHumerus" link2="RLeg" reason="Never"/>
+    <disable_collisions link1="LHumerus" link2="RShoulder" reason="Never"/>
+    <disable_collisions link1="LHumerus" link2="base_link" reason="Never"/>
+    <disable_collisions link1="LHumerus" link2="face" reason="Never"/>
+    <disable_collisions link1="LLeg" link2="LShoulder" reason="Never"/>
+    <disable_collisions link1="LLeg" link2="LTibia" reason="Never"/>
+    <disable_collisions link1="LLeg" link2="RForearm" reason="Never"/>
+    <disable_collisions link1="LLeg" link2="RHumerus" reason="Never"/>
+    <disable_collisions link1="LLeg" link2="RShoulder" reason="Never"/>
+    <disable_collisions link1="LLeg" link2="base_link" reason="Adjacent"/>
+    <disable_collisions link1="LLeg" link2="face" reason="Never"/>
+    <disable_collisions link1="LShoulder" link2="LTibia" reason="Never"/>
+    <disable_collisions link1="LShoulder" link2="RFemur" reason="Never"/>
+    <disable_collisions link1="LShoulder" link2="RFoot" reason="Never"/>
+    <disable_collisions link1="LShoulder" link2="RForearm" reason="Never"/>
+    <disable_collisions link1="LShoulder" link2="RHumerus" reason="Never"/>
+    <disable_collisions link1="LShoulder" link2="RLeg" reason="Never"/>
+    <disable_collisions link1="LShoulder" link2="RShoulder" reason="Never"/>
+    <disable_collisions link1="LShoulder" link2="RTibia" reason="Never"/>
+    <disable_collisions link1="LShoulder" link2="base_link" reason="Adjacent"/>
+    <disable_collisions link1="LShoulder" link2="face" reason="Never"/>
+    <disable_collisions link1="LTibia" link2="RShoulder" reason="Never"/>
+    <disable_collisions link1="LTibia" link2="base_link" reason="Never"/>
+    <disable_collisions link1="LTibia" link2="face" reason="Never"/>
+    <disable_collisions link1="RFemur" link2="RLeg" reason="Adjacent"/>
+    <disable_collisions link1="RFemur" link2="RShoulder" reason="Never"/>
+    <disable_collisions link1="RFemur" link2="RTibia" reason="Adjacent"/>
+    <disable_collisions link1="RFemur" link2="face" reason="Never"/>
+    <disable_collisions link1="RFoot" link2="RShoulder" reason="Never"/>
+    <disable_collisions link1="RFoot" link2="RTibia" reason="Adjacent"/>
+    <disable_collisions link1="RFoot" link2="face" reason="Never"/>
+    <disable_collisions link1="RForearm" link2="RHumerus" reason="Adjacent"/>
+    <disable_collisions link1="RForearm" link2="RShoulder" reason="Never"/>
+    <disable_collisions link1="RForearm" link2="base_link" reason="Never"/>
+    <disable_collisions link1="RForearm" link2="face" reason="Never"/>
+    <disable_collisions link1="RHumerus" link2="RShoulder" reason="Adjacent"/>
+    <disable_collisions link1="RHumerus" link2="base_link" reason="Never"/>
+    <disable_collisions link1="RHumerus" link2="face" reason="Never"/>
+    <disable_collisions link1="RLeg" link2="RShoulder" reason="Never"/>
+    <disable_collisions link1="RLeg" link2="RTibia" reason="Never"/>
+    <disable_collisions link1="RLeg" link2="base_link" reason="Adjacent"/>
+    <disable_collisions link1="RLeg" link2="face" reason="Never"/>
+    <disable_collisions link1="RShoulder" link2="RTibia" reason="Never"/>
+    <disable_collisions link1="RShoulder" link2="base_link" reason="Adjacent"/>
+    <disable_collisions link1="RShoulder" link2="face" reason="Never"/>
+    <disable_collisions link1="RTibia" link2="base_link" reason="Never"/>
+    <disable_collisions link1="RTibia" link2="face" reason="Never"/>
+    <disable_collisions link1="base_link" link2="face" reason="Adjacent"/>
+</robot>

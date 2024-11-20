@@ -1,0 +1,45 @@
+#This is a movit contoller connecting follow_joint_trajectory controller with JointTrajectoryController
+
+controller_list:
+  - name: right_arm_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    default: true
+    joints:
+    - RShoulder_pitch
+    - RShoulder_roll
+    - RElbow_pitch
+
+  - name: right_leg_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    joints:
+    - RHip_roll
+    - RHip_pitch
+    - RKnee_pitch
+    - RAnkle_roll
+    
+
+  - name: head_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    joints:
+    - Neck_yaw
+
+
+  - name: left_arm_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    joints:
+    - LShoulder_pitch
+    - LShoulder_roll
+    - LElbow_pitch
+
+  - name: left_leg_controller
+    action_ns: follow_joint_trajectory
+    type: FollowJointTrajectory
+    joints:
+    - LHip_roll
+    - LHip_pitch
+    - LKnee_pitch
+    - LAnkle_roll

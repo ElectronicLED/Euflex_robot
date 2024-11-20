@@ -1,0 +1,1206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="test_robot_urdf">
+
+  <!-- <link name="world"/> 
+    <joint name="base_joint" type="fixed">
+      <parent link="world"/>
+      <child link="base_link"/>
+      <origin rpy="0 0 0" xyz="0.0 0.0 0.17"/>
+  </joint>-->
+  <link name="base_link">
+    <inertial>
+      <origin
+        xyz="0.025554 -0.085 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.24982" />
+      <inertia
+        ixx="0.0001974"
+        ixy="-1.6155E-07"
+        ixz="-3.8594E-08"
+        iyy="0.00017956"
+        iyz="-7.4527E-06"
+        izz="0.00032713" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="RShoulder">
+    <inertial>
+      <origin
+        xyz="0.012477 0.0006161 -2.7756E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0097066" />
+      <inertia
+        ixx="5.4145E-06"
+        ixy="-8.0868E-08"
+        ixz="-2.1383E-22"
+        iyy="1.8341E-06"
+        iyz="-2.9845E-21"
+        izz="6.6057E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/RShoulder.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/RShoulder.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RShoulder_pitch"
+    type="revolute">
+    <origin
+      xyz="-0.050786 -0.11873 0.095526"
+      rpy="-0.0292 0 3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="RShoulder" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="-3.142"
+      upper="0"
+      effort="0.3"
+      velocity="3" />
+  </joint>
+  <link name="RHumerus">
+    <inertial>
+      <origin
+        xyz="-0.042934 0.0021494 0.0038885"
+        rpy="0 0 0" />
+      <mass
+        value="0.079003" />
+      <inertia
+        ixx="1.2241E-05"
+        ixy="8.9775E-07"
+        ixz="6.8935E-07"
+        iyy="3.0897E-05"
+        iyz="-6.311E-07"
+        izz="3.0365E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/RHumerus.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/RHumerus.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RShoulder_roll"
+    type="revolute">
+    <origin
+      xyz="0.026 0 0"
+      rpy="0 -1.5173 -3.1416" />
+    <parent
+      link="RShoulder" />
+    <child
+      link="RHumerus" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="3.142"
+      effort="0.3"
+      velocity="3" />
+  </joint>
+  <link name="RForearm">
+    <inertial>
+      <origin
+        xyz="-0.013523 0.0080161 1.3878E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0097066" />
+      <inertia
+        ixx="5.4145E-06"
+        ixy="-8.0868E-08"
+        ixz="-6.8821E-22"
+        iyy="1.8341E-06"
+        iyz="-1.6436E-21"
+        izz="6.6057E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/RForearm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/RForearm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RElbow_pitch"
+    type="revolute">
+    <origin
+      xyz="-0.0805 0.0074 0"
+      rpy="1.5708 0 -0.11963" />
+    <parent
+      link="RHumerus" />
+    <child
+      link="RForearm" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-3.142"
+      upper="0"
+      effort="0.3"
+      velocity="3" />
+  </joint>
+  <link name="face">
+    <inertial>
+      <origin
+        xyz="-1.3878E-17 0.011149 0.0078728"
+        rpy="0 0 0" />
+      <mass
+        value="0.01138" />
+      <inertia
+        ixx="3.562E-06"
+        ixy="-1.9058E-21"
+        ixz="4.2352E-22"
+        iyy="3.3882E-06"
+        iyz="-1.0545E-06"
+        izz="3.3852E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/face.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/face.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="Neck_yaw"
+    type="revolute">
+    <origin
+      xyz="0.025114 -0.11948 0.13268"
+      rpy="1.5708 0 -0.15619" />
+    <parent
+      link="base_link" />
+    <child
+      link="face" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0.3"
+      velocity="3" />
+  </joint>
+  <link name="RLeg">
+    <inertial>
+      <origin
+        xyz="0.026 0.00030805 -0.029308"
+        rpy="0 0 0" />
+      <mass
+        value="0.019413" />
+      <inertia
+        ixx="1.0829E-05"
+        ixy="-8.0868E-08"
+        ixz="-8.0868E-08"
+        iyy="8.4399E-06"
+        iyz="2.0532E-20"
+        izz="8.4399E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/RLeg.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/RLeg.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RHip_roll"
+    type="revolute">
+    <origin
+      xyz="-0.012886 -0.065133 -0.014974"
+      rpy="1.5708 1.5593 -3.1416" />
+    <parent
+      link="base_link" />
+    <child
+      link="RLeg" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0.3"
+      velocity="3" />
+  </joint>
+  <link name="RFemur">
+    <inertial>
+      <origin
+        xyz="-0.040258 -0.0014239 4.9602E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.07163" />
+      <inertia
+        ixx="1.0418E-05"
+        ixy="1.048E-09"
+        ixz="-3.3333E-10"
+        iyy="2.1292E-05"
+        iyz="8.3321E-14"
+        izz="2.5799E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/RFemur.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/RFemur.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RHip_pitch"
+    type="revolute">
+    <origin
+      xyz="0.052 0 -0.029"
+      rpy="0 -0.06306 -3.1416" />
+    <parent
+      link="RLeg" />
+    <child
+      link="RFemur" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0.3"
+      velocity="3" />
+  </joint>
+  <link name="RTibia">
+    <inertial>
+      <origin
+        xyz="0.026 0.00030805 -0.00030805"
+        rpy="0 0 0" />
+      <mass
+        value="0.019413" />
+      <inertia
+        ixx="1.0829E-05"
+        ixy="-8.0868E-08"
+        ixz="-8.0868E-08"
+        iyy="8.4399E-06"
+        iyz="3.1126E-20"
+        izz="8.4399E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/RTibia.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/RTibia.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RKnee_pitch"
+    type="revolute">
+    <origin
+      xyz="-0.0805 0 0"
+      rpy="1.5708 0.0012554 3.1416" />
+    <parent
+      link="RFemur" />
+    <child
+      link="RTibia" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0.3"
+      velocity="3" />
+  </joint>
+  <link name="RFoot">
+    <inertial>
+      <origin
+        xyz="-0.02 0 0.025"
+        rpy="0 0 0" />
+      <mass
+        value="0.057003" />
+      <inertia
+        ixx="1.4126E-05"
+        ixy="2.2875E-10"
+        ixz="-1.3786E-09"
+        iyy="2.1635E-05"
+        iyz="2.0514E-06"
+        izz="1.4608E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="-0.018 -0.023 0.05"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/RFoot.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="-0.018 -0.023 0.05"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/RFoot.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="RAnkle_roll"
+    type="revolute">
+    <origin
+      xyz="0.051814 0.027316 0.0079945"
+      rpy="-1.5708 -1.5466 -3.1416" />
+    <parent
+      link="RTibia" />
+    <child
+      link="RFoot" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0.3"
+      velocity="3" />
+  </joint>
+  <link name="LLeg">
+    <inertial>
+      <origin
+        xyz="-0.026 0.029308 0.00030805"
+        rpy="0 0 0" />
+      <mass
+        value="0.019413" />
+      <inertia
+        ixx="1.0829E-05"
+        ixy="-8.0868E-08"
+        ixz="8.0868E-08"
+        iyy="8.4399E-06"
+        iyz="-2.2077E-19"
+        izz="8.4399E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/LLeg.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/LLeg.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="LHip_roll"
+    type="revolute">
+    <origin
+      xyz="0.064114 -0.065133 -0.014974"
+      rpy="3.1416 -1.5267 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="LLeg" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0.3"
+      velocity="3" />
+  </joint>
+  <link name="LFemur">
+    <inertial>
+      <origin
+        xyz="-0.040258 -0.0014244 -4.9602E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.07163" />
+      <inertia
+        ixx="1.0418E-05"
+        ixy="-1.048E-09"
+        ixz="3.1543E-10"
+        iyy="2.1292E-05"
+        iyz="8.2662E-14"
+        izz="2.5799E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/LFemur.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/LFemur.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="LHip_pitch"
+    type="revolute">
+    <origin
+      xyz="-0.052 0.029 0"
+      rpy="-1.5708 0 0.025794" />
+    <parent
+      link="LLeg" />
+    <child
+      link="LFemur" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0.3"
+      velocity="3" />
+  </joint>
+  <link name="LTibia">
+    <inertial>
+      <origin
+        xyz="-0.026 0.00030805 0.00030805"
+        rpy="0 0 0" />
+      <mass
+        value="0.019413" />
+      <inertia
+        ixx="1.0829E-05"
+        ixy="-8.0868E-08"
+        ixz="8.0868E-08"
+        iyy="8.4399E-06"
+        iyz="7.8434E-20"
+        izz="8.4399E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/LTibia.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/LTibia.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="LKnee_pitch"
+    type="revolute">
+    <origin
+      xyz="-0.0805 0 0"
+      rpy="3.1416 0.0099355 0" />
+    <parent
+      link="LFemur" />
+    <child
+      link="LTibia" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0.3"
+      velocity="3" />
+  </joint>
+  <link name="LFoot">
+    <inertial>
+      <origin
+        xyz="-0.0099432 0.0056689 -0.0077894"
+        rpy="0 0 0" />
+      <mass
+        value="0.057003" />
+      <inertia
+        ixx="1.4126E-05"
+        ixy="-1.1299E-09"
+        ixz="-2.2731E-10"
+        iyy="1.4608E-05"
+        iyz="2.0509E-06"
+        izz="2.1635E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/LFoot.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/LFoot.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="LAnkle_roll"
+    type="revolute">
+    <origin
+      xyz="-0.052 0 0"
+      rpy="-1.5708 0 -1.5471" />
+    <parent
+      link="LTibia" />
+    <child
+      link="LFoot" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0.3"
+      velocity="3" />
+  </joint>
+  <link name="LShoulder">
+    <inertial>
+      <origin
+        xyz="0.012477 0.0006161 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.0097066" />
+      <inertia
+        ixx="5.4145E-06"
+        ixy="-8.0868E-08"
+        ixz="2.9572E-22"
+        iyy="1.8341E-06"
+        iyz="7.8417E-22"
+        izz="6.6057E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/LShoulder.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/LShoulder.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="LShoulder_pitch"
+    type="revolute">
+    <origin
+      xyz="0.10201 -0.11873 0.095526"
+      rpy="-0.026379 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="LShoulder" />
+    <axis
+      xyz="-1 0 0" />
+    <limit
+      lower="0"
+      upper="3.142"
+      effort="0.3"
+      velocity="3" />
+  </joint>
+  <link name="LHumerus">
+    <inertial>
+      <origin
+        xyz="-0.042934 0.0021494 0.0038885"
+        rpy="0 0 0" />
+      <mass
+        value="0.079003" />
+      <inertia
+        ixx="1.2241E-05"
+        ixy="8.9775E-07"
+        ixz="6.8935E-07"
+        iyy="3.0897E-05"
+        iyz="-6.311E-07"
+        izz="3.0365E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/LHumerus.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/LHumerus.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="LShoulder_roll"
+    type="revolute">
+    <origin
+      xyz="0.026 0 0"
+      rpy="0 -1.5034 3.1416" />
+    <parent
+      link="LShoulder" />
+    <child
+      link="LHumerus" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="3.142"
+      effort="0.3"
+      velocity="3" />
+  </joint>
+  <link name="LForearm">
+    <inertial>
+      <origin
+        xyz="-0.013523 0.0080161 -2.7756E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.0097066" />
+      <inertia
+        ixx="5.4145E-06"
+        ixy="-8.0868E-08"
+        ixz="-1.3367E-21"
+        iyy="1.8341E-06"
+        iyz="4.6301E-21"
+        izz="6.6057E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/LForearm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://test_robot_urdf/meshes/LForearm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint name="LElbow_pitch"
+    type="revolute">
+    <origin
+      xyz="-0.0805 0.0074 0"
+      rpy="1.5708 0 0.052842" />
+    <parent
+      link="LHumerus" />
+    <child
+      link="LForearm" />
+    <axis
+      xyz="0 -1 0" />
+    <limit
+      lower="0"
+      upper="3.142"
+      effort="0.3"
+      velocity="3" />
+  </joint>
+
+<!-- 
+  Adding actuators for every joint
+   Replace the “link_n” part with the name of child link of the joint and “joint_n” with the exact joint name for which you are writing this transmission tag. 
+   The transmission and actuator names can be defined anything you want. 
+   But the joint name must be the exact name of the joint.
+  <transmission name="link_n_trans">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="joint_n">
+  <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface></joint>
+  <actuator name="link_n_motor">
+  <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface> <mechanicalReduction>1</mechanicalReduction>
+  </actuator>
+  </transmission>
+     -->
+    
+  <transmission name="RShoulder_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RShoulder_pitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RShoulder_pitch_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface
+      </hardwareInterface> 
+      <mechanicalReduction>1
+      </mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="RHumerus_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RShoulder_roll">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RShoulder_roll_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface
+      </hardwareInterface> 
+      <mechanicalReduction>1
+      </mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="RForearm_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RElbow_pitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RElbow_pitch_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface
+      </hardwareInterface> 
+      <mechanicalReduction>1
+      </mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="face_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="Neck_yaw">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="Neck_yaw_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface
+      </hardwareInterface> 
+      <mechanicalReduction>1
+      </mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="RLeg_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RHip_roll">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RHip_roll_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface
+      </hardwareInterface> 
+      <mechanicalReduction>1
+      </mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="RFemur_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RHip_pitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RHip_pitch_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface
+      </hardwareInterface> 
+      <mechanicalReduction>1
+      </mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="RTibia_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RKnee_pitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RKnee_pitch_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface
+      </hardwareInterface> 
+      <mechanicalReduction>1
+      </mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="RFoot_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RAnkle_roll">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RAnkle_roll_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface
+      </hardwareInterface> 
+      <mechanicalReduction>1
+      </mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+
+  <transmission name="LLeg_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LHip_roll">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LHip_roll_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface
+      </hardwareInterface> 
+      <mechanicalReduction>1
+      </mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="LFemur_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LHip_pitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LHip_pitch_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface
+      </hardwareInterface> 
+      <mechanicalReduction>1
+      </mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="LTibia_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LKnee_pitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LKnee_pitch_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface
+      </hardwareInterface> 
+      <mechanicalReduction>1
+      </mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="LFoot_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LAnkle_roll">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LAnkle_roll_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface
+      </hardwareInterface> 
+      <mechanicalReduction>1
+      </mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="LShoulder_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LShoulder_pitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LShoulder_pitch_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface
+      </hardwareInterface> 
+      <mechanicalReduction>1
+      </mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="LHumerus_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LShoulder_roll">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LShoulder_roll_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface
+      </hardwareInterface> 
+      <mechanicalReduction>1
+      </mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+  <transmission name="LForearm_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LElbow_pitch">
+      <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LElbow_pitch_motor">
+      <hardwareInterface>hardware_interface/PositionJointInterface
+      </hardwareInterface> 
+      <mechanicalReduction>1
+      </mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+
+
+ <!--Add Gazebo Controller
+After the last transmission tag, add a gazebo controller tag as given below
+ <gazebo>
+ <plugin name="control"
+filename="libgazebo_ros_control.so">
+<robotNamespace>/</robotNamespace>
+</plugin>
+ </gazebo>
+-->
+  <gazebo>
+    <plugin name="control"
+    filename="libgazebo_ros_control.so">
+    <robotNamespace>/</robotNamespace>
+    </plugin>
+  </gazebo>
+<!-- Add Self Collision tags.
+Similar to transmission tags, create the self-collision tags for each movable link in URDF. 
+<gazebo reference="link_n">
+ <selfCollide>true</selfCollide>
+ </gazebo>
+
+ Note: Change “link_n” with the name of the link.
+
+-->
+
+  <gazebo reference="RShoulder">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="RHumerus">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="RForearm">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="face">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="RLeg">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="RFemur">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="RTibia">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="RFoot">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="LLeg">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="LFemur">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="LTibia">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="LFoot">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="LShoulder">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="LHumerus">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+  <gazebo reference="LForearm">
+    <selfCollide>true</selfCollide>
+  </gazebo>
+
+</robot>

@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<launch>
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+      <!-- <arg name="world_name" value="$(find miarobot_gazebo)/worlds/debi_v1.world"/> -->
+
+      <!-- ROBOCON 2024 PLAYGROUND NOT COLORED-->
+      <!-- <arg name="world_name" value="$(find miarobot_gazebo)/worlds/robocon_PG_v1.world"/> -->
+      <!-- ROBOCON 2024 PLAYGROUND COLORED -->
+
+      <!-- <arg name="paused" value="false"/> -->
+      <!-- <arg name="use_sim_time" value="true"/> -->
+      <!-- <arg name="gui" value="true"/> -->
+      <!-- <arg name="recording" value="false"/> -->
+      <!-- <arg name="debug" value="false"/> -->
+  </include>
+
+  <!-- Convert an xacro and put on parameter server -->
+  <!-- <param name="robot_description" textfile="$(find test_robot_urdf)/urdf/test_robot_urdf.urdf" />
+
+  <!Spawn a robot into Gazebo -->
+  <!-- <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-urdf -model opamp -z 0 -param robot_description -x 0 -y 1.15 -z 0.125" /> -->
+
+  <!-- Robots state publisher -->
+  <!-- <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" output="screen" /> -->
+
+  <!-- Starting Joint state publisher node which will publish the joint values   -->
+  <!-- <node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" /> -->
+
+  <!-- <node pkg="tf" type="static_transform_publisher" name="kinetic_camera" args="0 0 0 -1.570796 0 -1.570796 kinect_camera_link camera_link 10"/> --> -->
+
+</launch>

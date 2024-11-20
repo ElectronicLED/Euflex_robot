@@ -1,0 +1,30 @@
+#Instead of using TAB for indentation, use two spaces at the place of one TAB#Controller to control robot arm joints
+
+#robot_arm_controller:
+# type: "position_controllers/JointTrajectoryController"
+# joints: [joint_1, joint_2, joint_3, joint_4, joint_5]
+
+right_arm_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints: [RShoulder_pitch, RShoulder_roll, RElbow_pitch]
+
+head_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints: [Neck_yaw]
+  
+right_leg_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints: [RHip_roll, RHip_pitch, RKnee_pitch, RAnkle_roll]
+
+left_arm_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints: [LShoulder_pitch, LShoulder_roll, LElbow_pitch]
+
+left_leg_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints: [LHip_roll, LHip_pitch, LKnee_pitch, LAnkle_roll]
+
+#Controller to continuously publish joint states/positions
+joint_state_controller:
+  type: "joint_state_controller/JointStateController"
+  publish_rate: 50
