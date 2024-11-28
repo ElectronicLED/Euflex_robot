@@ -1,5 +1,4 @@
 <launch>
-
     <!-- Launch Your robot arms launch file which loads the robot in Gazebo and spawns the
     controllers -->
     <include file = "$(find test_robot_urdf)/launch/test_robot_urdf.launch" /> 

@@ -1,11 +1,4 @@
 controller_list:
-  - name: fake_Lleg_group_controller
-    type: $(arg fake_execution_type)
-    joints:
-      - LHip_roll
-      - LHip_pitch
-      - LKnee_pitch
-      - LAnkle_roll
   - name: fake_Rarm_group_controller
     type: $(arg fake_execution_type)
     joints:
@@ -18,6 +11,13 @@ controller_list:
       - LShoulder_pitch
       - LShoulder_roll
       - LElbow_pitch
+  - name: fake_Lleg_group_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - LHip_roll
+      - LHip_pitch
+      - LKnee_pitch
+      - LAnkle_roll
   - name: fake_Rleg_group_controller
     type: $(arg fake_execution_type)
     joints:
@@ -26,11 +26,5 @@ controller_list:
       - RKnee_pitch
       - RAnkle_roll
 initial:  # Define initial robot poses per group
-  - group: Lleg_group
-    pose: Lleg_walk0
   - group: Rarm_group
-    pose: Rarm_pose_0
-  - group: Larm_group
-    pose: Larm_pose_0
-  - group: Rleg_group
-    pose: Rleg_walk_0
+    pose: hi_0_pose

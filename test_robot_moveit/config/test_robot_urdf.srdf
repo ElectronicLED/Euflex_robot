@@ -9,85 +9,50 @@
     <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
     <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
     <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
-    <group name="Lleg_group">
-        <joint name="LHip_roll"/>
-        <joint name="LHip_pitch"/>
-        <joint name="LKnee_pitch"/>
-        <joint name="LAnkle_roll"/>
-    </group>
     <group name="Rarm_group">
-        <joint name="RElbow_pitch"/>
-        <joint name="RShoulder_roll"/>
         <joint name="RShoulder_pitch"/>
+        <joint name="RShoulder_roll"/>
+        <joint name="RElbow_pitch"/>
     </group>
     <group name="Larm_group">
         <joint name="LShoulder_pitch"/>
         <joint name="LShoulder_roll"/>
         <joint name="LElbow_pitch"/>
     </group>
+    <group name="Lleg_group">
+        <joint name="LHip_roll"/>
+        <joint name="LHip_pitch"/>
+        <joint name="LKnee_pitch"/>
+        <joint name="LAnkle_roll"/>
+    </group>
     <group name="Rleg_group">
-        <joint name="RAnkle_roll"/>
-        <joint name="RKnee_pitch"/>
-        <joint name="RHip_pitch"/>
         <joint name="RHip_roll"/>
+        <joint name="RHip_pitch"/>
+        <joint name="RKnee_pitch"/>
+        <joint name="RAnkle_roll"/>
     </group>
     <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
-    <group_state name="Rarm_pose_0" group="Rarm_group">
-        <joint name="RElbow_pitch" value="0"/>
-        <joint name="RShoulder_pitch" value="0"/>
-        <joint name="RShoulder_roll" value="0"/>
-    </group_state>
-    <group_state name="Larm_pose_0" group="Larm_group">
-        <joint name="LElbow_pitch" value="0"/>
-        <joint name="LShoulder_pitch" value="0"/>
-        <joint name="LShoulder_roll" value="0"/>
-    </group_state>
-    <group_state name="Rleg_walk_0" group="Rleg_group">
-        <joint name="RAnkle_roll" value="-0.0849"/>
-        <joint name="RHip_pitch" value="-0.2475"/>
-        <joint name="RHip_roll" value="-0.0778"/>
-        <joint name="RKnee_pitch" value="0.3536"/>
-    </group_state>
-    <group_state name="Lleg_walk0" group="Lleg_group">
-        <joint name="LAnkle_roll" value="0.0849"/>
-        <joint name="LHip_pitch" value="0.7991"/>
-        <joint name="LHip_roll" value="-0.0707"/>
-        <joint name="LKnee_pitch" value="-0.8486"/>
-    </group_state>
-    <group_state name="hi_0" group="Rarm_group">
-        <joint name="RElbow_pitch" value="0"/>
-        <joint name="RShoulder_pitch" value="0"/>
-        <joint name="RShoulder_roll" value="2.5263"/>
-    </group_state>
-    <group_state name="hi_1" group="Rarm_group">
+    <group_state name="hi_0_pose" group="Rarm_group">
         <joint name="RElbow_pitch" value="0"/>
         <joint name="RShoulder_pitch" value="0"/>
         <joint name="RShoulder_roll" value="3.142"/>
     </group_state>
-    <group_state name="Rleg_pose_0" group="Rleg_group">
-        <joint name="RAnkle_roll" value="-0.0283"/>
-        <joint name="RHip_pitch" value="0.0636"/>
-        <joint name="RHip_roll" value="-0.0212"/>
-        <joint name="RKnee_pitch" value="-0.0141"/>
-    </group_state>
-    <group_state name="Lleg_pose_0" group="Lleg_group">
-        <joint name="LAnkle_roll" value="0.0283"/>
-        <joint name="LHip_pitch" value="0.0707"/>
-        <joint name="LHip_roll" value="-0.0424"/>
-        <joint name="LKnee_pitch" value="-0.0424"/>
+    <group_state name="hi_1_pose" group="Rarm_group">
+        <joint name="RElbow_pitch" value="0"/>
+        <joint name="RShoulder_pitch" value="0"/>
+        <joint name="RShoulder_roll" value="2.6421"/>
     </group_state>
     <!--END EFFECTOR: Purpose: Represent information about an end effector.-->
-    <end_effector name="R_hand_ee" parent_link="RHumerus" group="Rarm_group"/>
-    <end_effector name="L_hand_ee" parent_link="LHumerus" group="Larm_group"/>
-    <end_effector name="R_foot_ee" parent_link="RTibia" group="Rleg_group"/>
-    <end_effector name="L_foot_ee" parent_link="LHumerus" group="Lleg_group"/>
+    <end_effector name="Lhand_ee" parent_link="LHumerus" group="Larm_group"/>
+    <end_effector name="Rhand_ee" parent_link="RHumerus" group="Rarm_group"/>
+    <end_effector name="Lleg_ee" parent_link="LTibia" group="Lleg_group"/>
+    <end_effector name="Rleg_ee" parent_link="RTibia" group="Rleg_group"/>
     <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
     <disable_collisions link1="LFemur" link2="LLeg" reason="Adjacent"/>
     <disable_collisions link1="LFemur" link2="LShoulder" reason="Never"/>
     <disable_collisions link1="LFemur" link2="LTibia" reason="Adjacent"/>
     <disable_collisions link1="LFemur" link2="RShoulder" reason="Never"/>
     <disable_collisions link1="LFemur" link2="face" reason="Never"/>
-    <disable_collisions link1="LFoot" link2="LForearm" reason="Never"/>
     <disable_collisions link1="LFoot" link2="LLeg" reason="Never"/>
     <disable_collisions link1="LFoot" link2="LShoulder" reason="Never"/>
     <disable_collisions link1="LFoot" link2="LTibia" reason="Adjacent"/>
@@ -131,6 +96,7 @@
     <disable_collisions link1="RFemur" link2="RShoulder" reason="Never"/>
     <disable_collisions link1="RFemur" link2="RTibia" reason="Adjacent"/>
     <disable_collisions link1="RFemur" link2="face" reason="Never"/>
+    <disable_collisions link1="RFoot" link2="RLeg" reason="Never"/>
     <disable_collisions link1="RFoot" link2="RShoulder" reason="Never"/>
     <disable_collisions link1="RFoot" link2="RTibia" reason="Adjacent"/>
     <disable_collisions link1="RFoot" link2="face" reason="Never"/>

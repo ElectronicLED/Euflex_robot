@@ -18,7 +18,7 @@ controller_list:
     - RHip_pitch
     - RKnee_pitch
     - RAnkle_roll
-    
+
 
   - name: head_controller
     action_ns: follow_joint_trajectory
@@ -30,6 +30,7 @@ controller_list:
   - name: left_arm_controller
     action_ns: follow_joint_trajectory
     type: FollowJointTrajectory
+    default: true
     joints:
     - LShoulder_pitch
     - LShoulder_roll
