@@ -41,49 +41,61 @@ display_trajectory_publisher = rospy.Publisher(
 # print(robot.get_current_state())
 # print("")
 
-Lleg_move_group = moveit_commander.MoveGroupCommander("Lleg_group")
-Rleg_move_group = moveit_commander.MoveGroupCommander("Rleg_group")
+Legs_move_group = moveit_commander.MoveGroupCommander("Legs_group")
+
 #returns an array of the groups' joint positions
-# Lleg_joint_goal = Lleg_move_group.get_current_joint_values()
-# Rleg_joint_goal = Rleg_move_group.get_current_joint_values()
-Lleg_joint_goal = [0,0,0,0]
-Rleg_joint_goal = [0,0,0,0]
+Legs_joint_goal = Legs_move_group.get_current_joint_values()
+
+print("----------Legs positions---------")
+print(Legs_joint_goal)
+
+
+Legs_joint_goal = [0,0,0,0,0,0,0,0]
+
+#joint order
+# 0- RHip_roll
+# 1- RHip_pitch
+# 2- RKnee_pitch
+# 3- RAnkle_roll
+# 4- LHip_roll
+# 5- LHip_pitch
+# 6- LKnee_pitch
+# 7- LAnkle_roll
+
 
 while not rospy.is_shutdown():
     #angles in radians
-    Lleg_joint_goal[0] = 0.057
-    Lleg_joint_goal[1] = 0.119
-    Lleg_joint_goal[2] = -Lleg_joint_goal[1]
-    Lleg_joint_goal[3] = Lleg_joint_goal[0]
-    Lleg_move_group.go(Lleg_joint_goal, wait=True)
+    Legs_joint_goal[4] = -0.057
+    Legs_joint_goal[5] = -0.119
+    Legs_joint_goal[6] = -Legs_joint_goal[5]
+    Legs_joint_goal[7] = Legs_joint_goal[4]
 
-    Rleg_joint_goal[0] = 0.057
-    Rleg_joint_goal[1] = -0.172
-    Rleg_joint_goal[2] = -Rleg_joint_goal[1]
-    Rleg_joint_goal[3] = Rleg_joint_goal[0]
-    Rleg_move_group.go(Rleg_joint_goal, wait=True)
+    Legs_joint_goal[0] = -0.057
+    Legs_joint_goal[1] = -0.172
+    Legs_joint_goal[2] = -Legs_joint_goal[1]
+    Legs_joint_goal[3] = Legs_joint_goal[0]
+    Legs_move_group.go(Legs_joint_goal, wait=True)
     # The go command can be called with joint values, poses, or without any
     # parameters if you have already set the pose or joint target for the group
     
     
 
     #angles in radians
-    Lleg_joint_goal[0] = 0.057
-    Lleg_joint_goal[1] = -0.172
-    Lleg_joint_goal[2] = -Lleg_joint_goal[1]
-    Lleg_joint_goal[3] = Lleg_joint_goal[0]
-    Lleg_move_group.go(Lleg_joint_goal, wait=True)
+    Legs_joint_goal[4] = 0.057
+    Legs_joint_goal[5] = 0.172
+    Legs_joint_goal[6] = -Legs_joint_goal[5]
+    Legs_joint_goal[7] = Legs_joint_goal[4]
+    
 
-    Rleg_joint_goal[0] = 0.057
-    Rleg_joint_goal[1] = 0.119
-    Rleg_joint_goal[2] = -Rleg_joint_goal[1]
-    Rleg_joint_goal[3] = Rleg_joint_goal[0]
-    Rleg_move_group.go(Rleg_joint_goal, wait=True)
+    Legs_joint_goal[0] = 0.057
+    Legs_joint_goal[1] = 0.119
+    Legs_joint_goal[2] = -Legs_joint_goal[1]
+    Legs_joint_goal[3] = Legs_joint_goal[0]
+    Legs_move_group.go(Legs_joint_goal, wait=True)
     # The go command can be called with joint values, poses, or without any
     # parameters if you have already set the pose or joint target for the group
     
     
 
 # Calling ``stop()`` ensures that there is no residual movement
-Lleg_move_group.stop()
-Rleg_move_group.stop()
+Legs_move_group.stop()

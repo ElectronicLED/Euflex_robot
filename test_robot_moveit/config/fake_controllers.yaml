@@ -11,16 +11,13 @@ controller_list:
       - LShoulder_pitch
       - LShoulder_roll
       - LElbow_pitch
-  - name: fake_Lleg_group_controller
+  - name: fake_Legs_group_controller
     type: $(arg fake_execution_type)
     joints:
       - LHip_roll
       - LHip_pitch
       - LKnee_pitch
       - LAnkle_roll
-  - name: fake_Rleg_group_controller
-    type: $(arg fake_execution_type)
-    joints:
       - RHip_roll
       - RHip_pitch
       - RKnee_pitch

@@ -228,7 +228,7 @@ Larm_group:
     - BITstar
   projection_evaluator: joints(LShoulder_pitch,LShoulder_roll)
   longest_valid_segment_fraction: 0.005
-Lleg_group:
+Legs_group:
   default_planner_config: RRT
   planner_configs:
     - AnytimePathShortening
@@ -259,36 +259,4 @@ Lleg_group:
     - ABITstar
     - BITstar
   projection_evaluator: joints(LHip_roll,LHip_pitch)
-  longest_valid_segment_fraction: 0.005
-Rleg_group:
-  default_planner_config: RRT
-  planner_configs:
-    - AnytimePathShortening
-    - SBL
-    - EST
-    - LBKPIECE
-    - BKPIECE
-    - KPIECE
-    - RRT
-    - RRTConnect
-    - RRTstar
-    - TRRT
-    - PRM
-    - PRMstar
-    - FMT
-    - BFMT
-    - PDST
-    - STRIDE
-    - BiTRRT
-    - LBTRRT
-    - BiEST
-    - ProjEST
-    - LazyPRM
-    - LazyPRMstar
-    - SPARS
-    - SPARStwo
-    - AITstar
-    - ABITstar
-    - BITstar
-  projection_evaluator: joints(RHip_roll,RHip_pitch)
   longest_valid_segment_fraction: 0.005
