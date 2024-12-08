@@ -1,5 +1,6 @@
 .vscode/
 CMakeLists.txt
 gazebo_ros_pkgs/
+test_dummy/
 mypackage/
 turtlebot3_simulations/
