@@ -332,7 +332,7 @@
   <link name="RFoot">
     <inertial>
       <origin
-        xyz="0.12479 0.009339 -0.0045296"
+        xyz="0.0 0.01 0.005"
         rpy="0 0 0" />
       <mass
         value="0.068473" />
@@ -363,8 +363,7 @@
         xyz="-0.125 0 0.01"
         rpy="0 0 0" />
       <geometry>
-        <mesh
-          filename="package://test_legs_urdf/meshes/RFoot.STL" />
+        <mesh filename="package://test_legs_urdf/meshes/RFoot.STL" />
       </geometry>
     </collision>
   </link>
@@ -393,12 +392,12 @@
       <mass
         value="0.013241" />
       <inertia
-        ixx="2.8521E-06"
-        ixy="-3.5111E-09"
-        ixz="-3.048E-08"
-        iyy="7.6357E-06"
-        iyz="-2.2658E-07"
-        izz="7.3792E-06" />
+        ixx="4.07741E-06"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
     </inertial>
     <visual>
       <origin
