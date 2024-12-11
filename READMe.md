@@ -11,9 +11,9 @@
 # How to use 
 **Note:** make sure to set the physics engine's Error Reduction Pameter (EMP) to 0.02 for the simulation to work properly.
 #### Running the test robot
-`roslaunch test_robot_urdf test_robot_urdf.launch`
-Running the test robot with Rviz and Moveit control
-`roslaunch test_robot_moveit run_all.launch` 
+`roslaunch test_robot_urdf test_robot_urdf.launch`\
+Running the test robot with Rviz and Moveit control\
+`roslaunch test_robot_moveit run_all.launch`\
 Then run any script from `test_robot_moveit/scripts/` using `python3`
 #### Running the test Legs
 `roslaunch test_legs_urdf legs.launch`
@@ -28,5 +28,5 @@ This project was largely based on this [playlist](https://www.youtube.com/playli
 [Moveit documentation](https://moveit.github.io/moveit_tutorials/index.html)\
 [Original test robot design]()
 ### Theory
-Jessy W. Grizzle [lecture](https://www.youtube.com/watch?v=EMX7wc0vcWE) on bipedal robots
+Jessy W. Grizzle [lecture](https://www.youtube.com/watch?v=EMX7wc0vcWE) on bipedal robots\
 Introduction to humanoid robots by Shuuji Kajita, Hirohisa Hirukawa, Kensuke Harada, and Kazuhito Yokoi
