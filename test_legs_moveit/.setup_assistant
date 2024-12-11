@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: test_legs_urdf
+    relative_path: urdf/test_legs_urdf.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/test_legs_urdf.srdf
+  CONFIG:
+    author_name: ElectronicLED
+    author_email: noureldinaymanshalaby@gmail.com
+    generated_timestamp: 1733892597

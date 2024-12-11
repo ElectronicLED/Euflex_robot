@@ -1,0 +1,21 @@
+controller_list:
+  - name: fake_legs_move_group_controller
+    type: $(arg fake_execution_type)
+    joints:
+      - LHip_yaw
+      - LHip_roll
+      - LHip_pitch
+      - LKnee_pitch
+      - LAnkle_pitch
+      - LAnkle_roll
+      - RHip_yaw
+      - RHip_roll
+      - RHip_pitch
+      - RKnee_pitch
+      - RAnkle_pitch
+      - RAnkle_roll
+initial:  # Define initial robot poses per group
+#  - group: legs_move_group
+#    pose: home
+
+  []

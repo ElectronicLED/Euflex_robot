@@ -1,1 +1,1 @@
-controller_joint_names: ['', 'RHip_yaw', 'RHip_roll', 'RHip_pitch', 'RKnee_pitch', 'RAnkle_pitch', 'RAnkle_roll', 'RHip_yaw', 'LHip_roll', 'LHip_pitch', 'LKnee_pitch', 'LAnkle_pitch', 'LAnkle_roll', ]
+controller_joint_names: ['RHip_yaw', 'RHip_roll', 'RHip_pitch', 'RKnee_pitch', 'RAnkle_pitch', 'RAnkle_roll', 'LHip_yaw', 'LHip_roll', 'LHip_pitch', 'LKnee_pitch', 'LAnkle_pitch', 'LAnkle_roll' ]
