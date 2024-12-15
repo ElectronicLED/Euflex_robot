@@ -13,7 +13,7 @@
   <link name="base_link">
     <inertial>
       <origin
-        xyz="0.0023973 0.0026111 -0.1"
+        xyz="0.0023973 -0.03 -0.1"
         rpy="0 0 0" />
       <mass
         value="0.37523" />
@@ -737,7 +737,7 @@
   </transmission>
      -->
 
-  <transmission name="LLeg_trans">
+  <!-- <transmission name="LLeg_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="LHip_yaw">
       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
@@ -867,6 +867,139 @@
     </joint>
     <actuator name="RAnkle_roll_motor">
       <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission> -->
+  <transmission name="LLeg_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LHip_yaw">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LHip_yaw_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="LHip_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LHip_roll">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LHip_roll_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="LFemur_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LHip_pitch">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LHip_pitch_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="LTibia_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LKnee_pitch">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LKnee_pitch_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="LAnkle_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LAnkle_pitch">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LAnkle_pitch_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="LFoot_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="LAnkle_roll">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="LAnkle_roll_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+
+
+  <transmission name="RLeg_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RHip_yaw">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RHip_yaw_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="RHip_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RHip_roll">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RHip_roll_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="RFemur_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RHip_pitch">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RHip_pitch_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="RTibia_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RKnee_pitch">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RKnee_pitch_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="RAnkle_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RAnkle_pitch">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RAnkle_pitch_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      <mechanicalReduction>1</mechanicalReduction>
+    </actuator>
+  </transmission>
+
+  <transmission name="RFoot_trans">
+    <type>transmission_interface/SimpleTransmission</type>
+    <joint name="RAnkle_roll">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+    </joint>
+    <actuator name="RAnkle_roll_motor">
+      <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission>

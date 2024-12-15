@@ -64,20 +64,74 @@ Legs_move_group = moveit_commander.MoveGroupCommander("legs_move_group")
 #10- RAnkle_pitch
 #11- RAnkle_roll
 
-#angles are in radian
-LHip_yaw    = 0
-LHip_roll   = 0
-LHip_pitch  = 0
-LKnee_pitch = 0
-LAnkle_pitch= 0 
-LAnkle_roll = 0
+def StepForward(steps):
 
-RHip_yaw    = 0
-RHip_roll   = 0
-RHip_pitch  = 0
-RKnee_pitch = 0
-RAnkle_pitch= 0
-RAnkle_roll = 0
+    for i in range(steps):
+        #angles are in radian
+        LHip_yaw    = 0.8
+        LHip_roll   = 0.0
+        LHip_pitch  = 0.0
+        LKnee_pitch = 0.0
+        LAnkle_pitch= 0.0
+        LAnkle_roll = LHip_roll
+
+        RHip_yaw    = 0.8
+        RHip_roll   = 0.0
+        RHip_pitch  = 0.0
+        RKnee_pitch = 0.0
+        RAnkle_pitch= 0.0
+        RAnkle_roll = RHip_roll
+
+        Legs_joint_goal = [LHip_yaw, LHip_roll, LHip_pitch, LKnee_pitch, LAnkle_pitch, LAnkle_roll,
+                        RHip_yaw, RHip_roll, RHip_pitch, RKnee_pitch, RAnkle_pitch, RAnkle_roll ]
+        # The go command can be called with joint values, poses, or without any
+        # parameters if you have already set the pose or joint target for the group
+        Legs_move_group.go(Legs_joint_goal, wait=True)
+
+
+
+        #angles are in radian
+        LHip_yaw    = 0.0
+        LHip_roll   = 0.0
+        LHip_pitch  = 0.0
+        LKnee_pitch = 0.0
+        LAnkle_pitch= 0.0
+        LAnkle_roll = LHip_roll
+
+        RHip_yaw    = 0.0
+        RHip_roll   = 0.0
+        RHip_pitch  = 0.0
+        RKnee_pitch = 0.0
+        RAnkle_pitch= 0.0
+        RAnkle_roll = RHip_roll
+
+        Legs_joint_goal = [LHip_yaw, LHip_roll, LHip_pitch, LKnee_pitch, LAnkle_pitch, LAnkle_roll,
+                        RHip_yaw, RHip_roll, RHip_pitch, RKnee_pitch, RAnkle_pitch, RAnkle_roll ]
+        # The go command can be called with joint values, poses, or without any
+        # parameters if you have already set the pose or joint target for the group
+        Legs_move_group.go(Legs_joint_goal, wait=True)
+
+
+
+
+#angles are in radian
+LAnkle_roll = 0.0
+LAnkle_pitch= 0.233
+LKnee_pitch = -0.602
+LHip_pitch  = LAnkle_pitch + 0.167
+LHip_roll   = LAnkle_roll
+LHip_yaw    = 0.0
+
+
+RAnkle_roll = 0.0
+RAnkle_pitch= -0.233
+RKnee_pitch = 0.602
+RHip_pitch  = RAnkle_pitch - 0.167
+RHip_roll   = RAnkle_roll
+RHip_yaw    = 0.0
+
+
+
 
 Legs_joint_goal = [LHip_yaw, LHip_roll, LHip_pitch, LKnee_pitch, LAnkle_pitch, LAnkle_roll,
                    RHip_yaw, RHip_roll, RHip_pitch, RKnee_pitch, RAnkle_pitch, RAnkle_roll ]
@@ -85,52 +139,13 @@ Legs_joint_goal = [LHip_yaw, LHip_roll, LHip_pitch, LKnee_pitch, LAnkle_pitch, L
 # parameters if you have already set the pose or joint target for the group
 Legs_move_group.go(Legs_joint_goal, wait=True)
 
-while not rospy.is_shutdown():
-
-    #angles are in radian
-    LHip_yaw    = 0.8
-    LHip_roll   = 0.0
-    LHip_pitch  = 0.0
-    LKnee_pitch = 0.0
-    LAnkle_pitch= 0.0
-    LAnkle_roll = 0.0
-
-    RHip_yaw    = 0.8
-    RHip_roll   = 0.0
-    RHip_pitch  = 0.0
-    RKnee_pitch = 0.0
-    RAnkle_pitch= 0.0
-    RAnkle_roll = 0.0
-
-    Legs_joint_goal = [LHip_yaw, LHip_roll, LHip_pitch, LKnee_pitch, LAnkle_pitch, LAnkle_roll,
-                    RHip_yaw, RHip_roll, RHip_pitch, RKnee_pitch, RAnkle_pitch, RAnkle_roll ]
-    # The go command can be called with joint values, poses, or without any
-    # parameters if you have already set the pose or joint target for the group
-    Legs_move_group.go(Legs_joint_goal, wait=True)
 
 
 
 
-    #angles are in radian
-    LHip_yaw    = 0.0
-    LHip_roll   = 0.0
-    LHip_pitch  = 0.0
-    LKnee_pitch = 0.0
-    LAnkle_pitch= 0.0
-    LAnkle_roll = 0.0
+#while not rospy.is_shutdown():
 
-    RHip_yaw    = 0.0
-    RHip_roll   = 0.0
-    RHip_pitch  = 0.0
-    RKnee_pitch = 0.0
-    RAnkle_pitch= 0.0
-    RAnkle_roll = 0.0
-
-    Legs_joint_goal = [LHip_yaw, LHip_roll, LHip_pitch, LKnee_pitch, LAnkle_pitch, LAnkle_roll,
-                    RHip_yaw, RHip_roll, RHip_pitch, RKnee_pitch, RAnkle_pitch, RAnkle_roll ]
-    # The go command can be called with joint values, poses, or without any
-    # parameters if you have already set the pose or joint target for the group
-    Legs_move_group.go(Legs_joint_goal, wait=True)
+    
     
     
     

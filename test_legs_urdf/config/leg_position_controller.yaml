@@ -1,0 +1,58 @@
+# Publish all joint states -----------------------------------
+joint_state_controller:
+  type: joint_state_controller/JointStateController
+  publish_rate: 50  
+
+# Position Controllers ---------------------------------------
+RHip_yaw_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: RHip_yaw
+  pid: {p: 5.0, i: 0.05, d: 0.0}
+RHip_roll_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: RHip_roll
+  pid: {p: 5.0, i: 0.05, d: 0.0}
+RHip_pitch_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: RHip_pitch
+  pid: {p: 5.0, i: 0.05, d: 0.0}
+RKnee_pitch_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: RKnee_pitch
+  pid: {p: 5.0, i: 0.05, d: 0.0}
+RAnkle_pitch_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: RAnkle_pitch
+  pid: {p: 5.0, i: 0.05, d: 0.0}
+RAnkle_roll_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: RAnkle_roll
+  pid: {p: 5.0, i: 0.05, d: 0.0}
+
+
+
+
+LHip_yaw_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: LHip_yaw
+  pid: {p: 5.0, i: 0.05, d: 0.0}
+LHip_roll_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: LHip_roll
+  pid: {p: 5.0, i: 0.05, d: 0.0}
+LHip_pitch_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: LHip_pitch
+  pid: {p: 5.0, i: 0.05, d: 0.0}
+LKnee_pitch_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: LKnee_pitch
+  pid: {p: 5.0, i: 0.05, d: 0.0}
+LAnkle_pitch_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: LAnkle_pitch
+  pid: {p: 5.0, i: 0.05, d: 0.0}
+LAnkle_roll_position_controller:
+  type: effort_controllers/JointPositionController
+  joint: LAnkle_roll
+  pid: {p: 5.0, i: 0.05, d: 0.0}

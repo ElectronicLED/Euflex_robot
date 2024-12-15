@@ -20,10 +20,30 @@
     -J LHip_yaw 0.0 -J LHip_roll 0.0 -J LHip_pitch 0.4 -J LKnee_pitch -0.602 -J LAnkle_pitch 0.233 -J LAnkle_roll 0.0" />
     
     <!--Load and launch the joint trajectory controller-->
-    <rosparam file ="$(find test_legs_urdf)/config/joint_trajectory_controller.yaml"
+    <!-- <rosparam file ="$(find test_legs_urdf)/config/joint_trajectory_controller.yaml"
     command="load"/>
     <node name= "controller_spawner" pkg= "controller_manager" type="spawner" respawn="false"
-    output="screen" args="joint_state_controller left_leg_controller right_leg_controller"/> 
+    output="screen" args="joint_state_controller left_leg_controller right_leg_controller"/> -->
+
+    <!--Testing purposes Load and launch the joint position controller-->
+    <rosparam file ="$(find test_legs_urdf)/config/leg_position_controller.yaml"
+    command="load"/>
+    <node name= "controller_spawner" pkg= "controller_manager" type="spawner" respawn="false"
+    output="screen" args="joint_state_controller 
+    RHip_yaw_position_controller 
+    RHip_roll_position_controller 
+    RHip_pitch_position_controller
+    RKnee_pitch_position_controller
+    RAnkle_pitch_position_controller
+    RAnkle_roll_position_controller
+    
+    LHip_yaw_position_controller
+    LHip_roll_position_controller
+    LHip_pitch_position_controller
+    LKnee_pitch_position_controller
+    LAnkle_pitch_position_controller
+    LAnkle_roll_position_controller"/>
+
     <!-- Robot State Publisher for TF of each joint: publishes all the current states of the joint, then RViz
     can visualize -->
     <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"
