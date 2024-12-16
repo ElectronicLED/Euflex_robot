@@ -870,6 +870,9 @@
       <mechanicalReduction>1</mechanicalReduction>
     </actuator>
   </transmission> -->
+
+
+  <!-- Using to effort interface -->
   <transmission name="LLeg_trans">
     <type>transmission_interface/SimpleTransmission</type>
     <joint name="LHip_yaw">

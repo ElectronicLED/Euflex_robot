@@ -16,8 +16,10 @@ Running the test robot with Rviz and Moveit control\
 `roslaunch test_robot_moveit run_all.launch`\
 Then run any script from `test_robot_moveit/scripts/` using `python3`
 #### Running the test Legs
-`roslaunch test_legs_urdf legs.launch`
-To run them with moveit and rviz:
+For simply running the simulation and publishing joint positions use: `roslaunch test_legs_urdf position_leg.launch` then\
+use `python3` to run any script from the scripts folder
+
+To run the legs with moveit and rviz:\
 `roslaunch test_legs_moveit run_all.launch`
 
 moveit packages have a scripts folder that contains python scripts for publishing to the joints. To use them launch the package with Rviz and Moveit then simply use `python3` to run the desired script.

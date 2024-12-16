@@ -4,6 +4,7 @@ joint_state_controller:
   publish_rate: 50  
 
 # Position Controllers ---------------------------------------
+#PID values might need more tuning
 RHip_yaw_position_controller:
   type: effort_controllers/JointPositionController
   joint: RHip_yaw
