@@ -8,27 +8,27 @@ joint_state_controller:
 RHip_yaw_position_controller:
   type: effort_controllers/JointPositionController
   joint: RHip_yaw
-  pid: {p: 5.0, i: 0.05, d: 0.0}
+  pid: {p: 30.0, i: 0.1, d: 18.0}
 RHip_roll_position_controller:
   type: effort_controllers/JointPositionController
   joint: RHip_roll
-  pid: {p: 5.0, i: 0.05, d: 0.0}
+  pid: {p: 30.0, i: 0.2, d: 25.0}
 RHip_pitch_position_controller:
   type: effort_controllers/JointPositionController
   joint: RHip_pitch
-  pid: {p: 5.0, i: 0.05, d: 0.0}
+  pid: {p: 20.0, i: 0.05, d: 10.0}
 RKnee_pitch_position_controller:
   type: effort_controllers/JointPositionController
   joint: RKnee_pitch
-  pid: {p: 5.0, i: 0.05, d: 0.0}
+  pid: {p: 20.0, i: 0.05, d: 10.0}
 RAnkle_pitch_position_controller:
   type: effort_controllers/JointPositionController
   joint: RAnkle_pitch
-  pid: {p: 5.0, i: 0.05, d: 0.0}
+  pid: {p: 20.0, i: 0.05, d: 0.0}
 RAnkle_roll_position_controller:
   type: effort_controllers/JointPositionController
   joint: RAnkle_roll
-  pid: {p: 5.0, i: 0.05, d: 0.0}
+  pid: {p: 30.0, i: 0.2, d: 25.0}
 
 
 
@@ -36,24 +36,24 @@ RAnkle_roll_position_controller:
 LHip_yaw_position_controller:
   type: effort_controllers/JointPositionController
   joint: LHip_yaw
-  pid: {p: 5.0, i: 0.05, d: 0.0}
+  pid: {p: 30.0, i: 0.1, d: 18.0}
 LHip_roll_position_controller:
   type: effort_controllers/JointPositionController
   joint: LHip_roll
-  pid: {p: 5.0, i: 0.05, d: 0.0}
+  pid: {p: 30.0, i: 0.2, d: 25.0}
 LHip_pitch_position_controller:
   type: effort_controllers/JointPositionController
   joint: LHip_pitch
-  pid: {p: 5.0, i: 0.05, d: 0.0}
+  pid: {p: 20.0, i: 0.05, d: 0.0}
 LKnee_pitch_position_controller:
   type: effort_controllers/JointPositionController
   joint: LKnee_pitch
-  pid: {p: 5.0, i: 0.05, d: 0.0}
+  pid: {p: 20.0, i: 0.05, d: 10.0}
 LAnkle_pitch_position_controller:
   type: effort_controllers/JointPositionController
   joint: LAnkle_pitch
-  pid: {p: 5.0, i: 0.05, d: 0.0}
+  pid: {p: 20.0, i: 0.05, d: 10.0}
 LAnkle_roll_position_controller:
   type: effort_controllers/JointPositionController
   joint: LAnkle_roll
-  pid: {p: 5.0, i: 0.05, d: 0.0}
+  pid: {p: 30.0, i: 0.2, d: 25.0}

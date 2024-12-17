@@ -102,7 +102,7 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0.3"
+      effort="1.3"
       velocity="5" />
   </joint>
   <link name="RHip">
@@ -158,7 +158,7 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0.3"
+      effort="1.3"
       velocity="5" />
   </joint>
   <link name="RFemur">
@@ -214,7 +214,7 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0.3"
+      effort="1.3"
       velocity="5" />
   </joint>
   <link name="RTibia">
@@ -270,7 +270,7 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0.3"
+      effort="1.3"
       velocity="5" />
   </joint>
   <link name="RAnkle">
@@ -326,7 +326,7 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0.3"
+      effort="1.3"
       velocity="5" />
   </joint>
   <link name="RFoot">
@@ -381,7 +381,7 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0.3"
+      effort="1.3"
       velocity="5" />
   </joint>
   <link name="LLeg">
@@ -437,7 +437,7 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0.3"
+      effort="1.3"
       velocity="5" />
   </joint>
   <link name="LHip">
@@ -493,7 +493,7 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0.3"
+      effort="1.3"
       velocity="5" />
   </joint>
   <link name="LFemur">
@@ -549,7 +549,7 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0.3"
+      effort="1.3"
       velocity="5" />
   </joint>
   <link name="LTibia">
@@ -605,7 +605,7 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0.3"
+      effort="1.3"
       velocity="5" />
   </joint>
   <link name="LAnkle">
@@ -661,7 +661,7 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0.3"
+      effort="1.3"
       velocity="5" />
   </joint>
   <link name="LFoot">
@@ -717,7 +717,7 @@
     <limit
       lower="-1.57"
       upper="1.57"
-      effort="0.3"
+      effort="1.3"
       velocity="5" />
   </joint>
 
