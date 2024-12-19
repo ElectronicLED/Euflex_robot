@@ -1,6 +1,8 @@
 import rospkg
 import rospy
 from std_msgs.msg import Float64
+import time
+import math
 
 #ros topics
 
@@ -83,7 +85,9 @@ LHip_roll_pub.publish(LHip_roll)
 
 
 while not rospy.is_shutdown():
-    LAnkle_roll = float(input("LAnkle_roll:"))
+
+    #first step is to shift weight to one leg
+    LAnkle_roll = float(input("LAnkle_roll: "))#-0.1 rad
     RAnkle_roll = LAnkle_roll
 
     RHip_roll   = -RAnkle_roll
@@ -94,4 +98,25 @@ while not rospy.is_shutdown():
     RAnkle_roll_pub.publish(RAnkle_roll)
     RHip_roll_pub.publish(RHip_roll)
 
-    print("\n")
+
+    #second step is to lift the leg that isnt holding the weight
+    LAnkle_pitch = float(input("LAnkle_pitch: "))#
+    LKnee_pitch = -0.016 * LAnkle_pitch**2 - 0.65
+    LHip_pitch  = -3*LAnkle_pitch + 0.4
+
+    if LAnkle_pitch == 0.0:
+        #initial positions
+        LAnkle_pitch_pub.publish(0.233)
+        LKnee_pitch_pub.publish(LKnee_pitch)
+        LHip_pitch_pub.publish(LHip_pitch)
+    else:
+        LHip_pitch_pub.publish(LHip_pitch)
+        LKnee_pitch_pub.publish(LKnee_pitch)
+        LAnkle_pitch_pub.publish(LAnkle_pitch)
+
+
+
+    #Time for our favourite inverted pendulum
+    
+
+    print("------Done------\n")
