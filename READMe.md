@@ -1,34 +1,98 @@
-# Pre-requisites
-1. Install ros
-2. Install moveit `sudo apt install ros-noetic-moveit`
-3. ros controllers `sudo apt install ros-noetic-ros-control ros-noetic-ros-controllers`
 
-# Setup
-1. Copy these package in the `/src` of your catkin workspace
-2. go to your catkin workspace and run `catkin_make`
-3. source the setup file using `source devel/setup.bash`
+## 0. Pre-requisites
 
-# How to use 
-**Note:** make sure to set the physics engine's Error Reduction Pameter (EMP) to 0.02 for the simulation to work properly.
-#### Running the test robot
-`roslaunch test_robot_urdf test_robot_urdf.launch`\
-Running the test robot with Rviz and Moveit control\
-`roslaunch test_robot_moveit run_all.launch`\
-Then run any script from `test_robot_moveit/scripts/` using `python3`
-#### Running the test Legs
-For simply running the simulation and publishing joint positions use: `roslaunch test_legs_urdf position_leg.launch` then\
-use `python3` to run any script from the scripts folder
+Before starting, make sure you have the following installed:
 
-To run the legs with moveit and rviz:\
-`roslaunch test_legs_moveit run_all.launch`
+1. **ROS** (Robot Operating System)
+2. **MoveIt**: Install using the following command:
+   ```
+   sudo apt install ros-noetic-moveit
+   ```
+3. **ROS Controllers**: Install using the following command:
+   ```
+   sudo apt install ros-noetic-ros-control ros-noetic-ros-controllers
+   ```
 
-moveit packages have a scripts folder that contains python scripts for publishing to the joints. To use them launch the package with Rviz and Moveit then simply use `python3` to run the desired script.
+## 1. Setup
 
-# Resources 
-### Tools
-This project was largely based on this [playlist](https://www.youtube.com/playlist?list=PLeEzO_sX5H6TBD6EMGgV-qdhzxPY19m12) and [document](https://github.com/ageofrobotics/import_your_custom_urdf_package_to_ROS-main/blob/main/Importing_URDF_Package_from_Soloidworks_in_ROS.pdf) by [Age of robotics](https://github.com/ageofrobotics)\
-[Moveit documentation](https://moveit.github.io/moveit_tutorials/index.html)\
-[Original test robot design]()
-### Theory
-Jessy W. Grizzle [lecture](https://www.youtube.com/watch?v=EMX7wc0vcWE) on bipedal robots\
-Introduction to humanoid robots by Shuuji Kajita, Hirohisa Hirukawa, Kensuke Harada, and Kazuhito Yokoi
+Follow these steps to set up the project:
+
+1. **Copy the packages** into the `/src` folder of your catkin workspace.
+2. **Build the workspace**:
+   ```
+   cd ~/your_catkin_ws
+   catkin_make
+   ```
+3. **Source the setup file**:
+   ```
+   source devel/setup.bash
+   ```
+
+## 2. How to Use
+
+### Running the Test Robot
+
+**Important:** Set the Physics Engine’s Error Reduction Parameter (ERP) to `0.02` for the simulation to run smoothly.
+
+You can launch the test robot in two different ways:
+
+1. **With Gazebo**:
+   ```
+   roslaunch test_robot_urdf test_robot_urdf.launch
+   ```
+
+2. **With Rviz and MoveIt Control**:
+   ```
+   roslaunch test_robot_moveit run_all.launch
+   ```
+
+After launching, you can run any script from the `test_robot_moveit/scripts/` folder by executing:
+   ```
+   python3 <script_name>.py
+   ```
+
+### Running the Test Legs
+
+To run the simulation and publish joint positions:
+
+1. Launch the simulation:
+   ```
+   roslaunch test_legs_urdf position_leg.launch
+   ```
+
+2. Then, use `python3` to run either script from the `scripts` folder:
+   ```
+   python3 <script_name>.py
+   ```
+
+### Running the Legs with MoveIt and Rviz
+
+For MoveIt and Rviz integration with trajectory controllers:
+
+1. **Edit the URDF**: Uncomment the trajectory controllers and comment the effort controllers.
+2. **Launch the simulation with MoveIt and Rviz**:
+   ```
+   roslaunch test_legs_moveit legs.launch
+   ```
+
+_moveit packages comes with a `scripts` folder for publishing joint movements. To use them launch the package with Rviz and Moveit then simply use python3 to run the desired script. However, **it is recommended to use C++** for more efficient handling, as MoveIt’s Python functionality is limited.
+
+## 3. Resources
+
+### 3.1 Tools
+
+The project is built based on the following resources:
+
+- [Age of Robotics YouTube Playlist](https://www.youtube.com/playlist?list=PLeEzO_sX5H6TBD6EMGgV-qdhzxPY19m12)
+- [Importing URDF Package from SolidWorks in ROS - GitHub Guide](https://github.com/ageofrobotics/import_your_custom_urdf_package_to_ROS-main/blob/main/Importing_URDF_Package_from_Soloidworks_in_ROS.pdf)
+- [MoveIt Documentation](https://moveit.github.io/moveit_tutorials/index.html)
+- [Original Test Robot Design on GrabCAD](https://grabcad.com/library/humanoid-robot-14)
+
+### 3.2 Theory
+
+For a deeper understanding of humanoid robots, consider exploring the following resources:
+
+- **Jessy W. Grizzle’s Lecture on Bipedal Robots**: [Watch here](https://www.youtube.com/watch?v=EMX7wc0vcWE)
+- **Introduction to Humanoid Robots** by Shuuji Kajita, Hirohisa Hirukawa, Kensuke Harada, and Kazuhito Yokoi.
+
+---

@@ -89,7 +89,7 @@ def walk_X_steps(steps=0):
 
 
 #golden ratios
-#angles msgs in rad
+#angles msgs are in rad
 #These numbers are for standing up and ready to move
 LAnkle_roll = 0.0
 LAnkle_pitch= 0.233
