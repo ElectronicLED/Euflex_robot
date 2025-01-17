@@ -87,6 +87,9 @@ The project is built based on the following resources:
 - [Importing URDF Package from SolidWorks in ROS - GitHub Guide](https://github.com/ageofrobotics/import_your_custom_urdf_package_to_ROS-main/blob/main/Importing_URDF_Package_from_Soloidworks_in_ROS.pdf)
 - [MoveIt Documentation](https://moveit.github.io/moveit_tutorials/index.html)
 - [Original Test Robot Design on GrabCAD](https://grabcad.com/library/humanoid-robot-14)
+- [pySLAM](https://github.com/luigifreda/pyslam)
+- [VINS-MONO](https://github.com/HKUST-Aerial-Robotics/VINS-Mono)
+- [rtabmap](https://wiki.ros.org/rtabmap_ros)
 
 ### 3.2 Theory
 
