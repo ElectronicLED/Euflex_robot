@@ -36,62 +36,6 @@ l2 = 0.079    # Length of second link (m)
 
 
 
-def walk_X_steps(steps=0):
-
-    #first step is to shift weight to one leg
-    LAnkle_roll = -0.17 #rad
-    RAnkle_roll = LAnkle_roll
-
-    RHip_roll   = -RAnkle_roll
-    LHip_roll   = -LAnkle_roll
-
-    print("Shifting weight")
-    LAnkle_roll_pub.publish(LAnkle_roll)
-    LHip_roll_pub.publish(LHip_roll)
-    RAnkle_roll_pub.publish(RAnkle_roll)
-    RHip_roll_pub.publish(RHip_roll)
-
-    time.sleep(4)
-    #second step is to lift the leg that isnt holding the weight
-    print("Rasising leg")
-    LAnkle_pitch = -0.15 #rad
-    LKnee_pitch = -0.016 * LAnkle_pitch**2 - 0.65
-    LHip_pitch  = -3*LAnkle_pitch + 0.4
-
-    LHip_pitch_pub.publish(LHip_pitch)
-    LKnee_pitch_pub.publish(LKnee_pitch)
-    LAnkle_pitch_pub.publish(LAnkle_pitch)
-
-
-    
-    #Time for our favourite inverted while shifting weight
-    print("Shifting weight")
-    RAnkle_pitch = -0.6
-    RKnee_pitch = -0.016 * RAnkle_pitch**2 + 0.65
-    RHip_pitch = -0.1*RAnkle_pitch - 0.4
-
-    LAnkle_roll = 0.17 #rad
-    RAnkle_roll = LAnkle_roll
-
-    RHip_roll   = -RAnkle_roll
-    LHip_roll   = -LAnkle_roll
-
-     
-    RAnkle_pitch_pub.publish(RAnkle_pitch)
-    RHip_pitch_pub.publish(RHip_pitch)
-    RKnee_pitch_pub.publish(RKnee_pitch)
-    time.sleep(2)
-    LAnkle_roll_pub.publish(LAnkle_roll)
-    LHip_roll_pub.publish(LHip_roll)
-    RAnkle_roll_pub.publish(RAnkle_roll)
-    RHip_roll_pub.publish(RHip_roll)
-    
-    
-    print("------Done------\n")
-
-
-
-
 
 #golden ratios
 #angles msgs are in rad
@@ -166,15 +110,17 @@ def neutralPosition(Leg="LR"):
 
 while not rospy.is_shutdown():
 
-    #walk_X_steps()
     while True:
         if input("Start? ") == 'y':
             time.sleep(1)
+            print("")
             break
         if input("Reset? ") == 'y':
             neutralPosition()
             print("Reseting...")
             time.sleep(5)
+        if input("End Script? ") == 'y':
+            quit()
         
 
     # 1- first step is to shift weight to one leg
@@ -201,6 +147,7 @@ while not rospy.is_shutdown():
     LHip_pitch  = -3*LAnkle_pitch + 0.4'''
     #LHip_pitch = float(input("LHip_pitch: "))
     #LKnee_pitch = float(input("LKnee_pitch: "))
+    print("Lifting leg..")
     LHip_pitch = 0.2
     LKnee_pitch = 0.2
     LAnkle_pitch = - LKnee_pitch - LHip_pitch
@@ -220,11 +167,12 @@ while not rospy.is_shutdown():
 
 
 
-    for i in range(5):
-        print(i)
-        time.sleep(1)
+    
+    time.sleep(3)
+    print("inverted pendelum...")
     # 3- Time for our favourite inverted pendulum
-    RAnkle_pitch = float(input("RAnkle_pitch: "))
+    #RAnkle_pitch = float(input("RAnkle_pitch: "))#-0.55
+    RAnkle_pitch = -0.55
     RKnee_pitch = -0.016 * RAnkle_pitch**2 + 0.65
     RHip_pitch = -0.1*RAnkle_pitch - 0.4
 
@@ -247,7 +195,7 @@ while not rospy.is_shutdown():
 
 
 
-    
+    print("lowering stepping leg")
     # Third Experimental step is to lower the raised leg from the hip to begin the weight shift
     time.sleep(3)
     #RHip_roll = float(input("RHip_roll: ")) # 0.3
@@ -268,20 +216,79 @@ while not rospy.is_shutdown():
     RHip_roll_pub.publish(RHip_roll)
 
 
-   
-    '''
+
+    # 5- more inverted pendulum
+    print("more inverted pendelum")
     time.sleep(5)
-    # Shift the weight to the front leg
-    LAnkle_roll = 0.17
-    LHip_roll   = -LAnkle_roll 
+    #RAnkle_pitch = float(input("RAnkle_pitch: "))#-0.65
+    RAnkle_pitch = -0.68
+    RKnee_pitch = -0.016 * RAnkle_pitch**2 + 0.65
+    RHip_pitch = -0.1*RAnkle_pitch - 0.4
 
+    LHip_pitch = 0.2 - RHip_pitch
+    LKnee_pitch = 0.2
+    LAnkle_pitch = - LKnee_pitch - LHip_pitch - LAnkle_pitch
+
+    if RAnkle_pitch == 0.0:
+        RAnkle_pitch_pub.publish(-0.233)
+    else:   
+        RAnkle_pitch_pub.publish(RAnkle_pitch)
+        RHip_pitch_pub.publish(RHip_pitch)
+        RKnee_pitch_pub.publish(RKnee_pitch)
+
+        LHip_pitch_pub.publish(LHip_pitch)
+        LKnee_pitch_pub.publish(LKnee_pitch)
+        LAnkle_pitch_pub.publish(LAnkle_pitch)
+
+
+    rospy.loginfo(f"\nLeft hip: {LHip_pitch}\t\t\t\t\tRighthip:{RHip_pitch}\nLeft ankle{LAnkle_pitch}\t\tRight ankle{RAnkle_pitch}")
+
+    # pushing the ground with front leg using
+    # you guessed it INVERTED PENDELUM
+    LAnkle_pitch= float(input("LAnkle_pitch: "))
+    LKnee_pitch = -0.016 * LAnkle_pitch**2 - 0.65
+    LHip_pitch  = LAnkle_pitch + 0.167
+
+    LAnkle_roll = 0.0
+    LHip_roll   = -LAnkle_roll
     RAnkle_roll = LAnkle_roll
-    RHip_roll   = -RAnkle_roll
+    RHip_roll   = -RAnkle_roll 
 
-    LAnkle_roll_pub.publish(LAnkle_roll)
-    LHip_roll_pub.publish(LHip_roll)
-    RAnkle_roll_pub.publish(RAnkle_roll)
-    RHip_roll_pub.publish(RHip_roll)'''
+    if LAnkle_pitch == 0.0:
+        LAnkle_pitch_pub.publish(0.233)
+    else:
+        LAnkle_roll_pub.publish(LAnkle_roll)
+        LHip_roll_pub.publish(LHip_roll)
+        RAnkle_roll_pub.publish(RAnkle_roll)
+        RHip_roll_pub.publish(RHip_roll)
+
+        time.sleep(0.5)
+        LHip_pitch_pub.publish(LHip_pitch)
+        LKnee_pitch_pub.publish(LKnee_pitch)
+        LAnkle_pitch_pub.publish(LAnkle_pitch)
+    
+        
+
+
+    
+
+
+
+   
+    
+    # time.sleep(5)
+    # # Shift the weight to the front leg
+    # print("shifting weight to other leg")
+    # LAnkle_roll = 0.17
+    # LHip_roll   = -LAnkle_roll 
+
+    # RAnkle_roll = LAnkle_roll
+    # RHip_roll   = -RAnkle_roll
+
+    # LAnkle_roll_pub.publish(LAnkle_roll)
+    # LHip_roll_pub.publish(LHip_roll)
+    # RAnkle_roll_pub.publish(RAnkle_roll)
+    # RHip_roll_pub.publish(RHip_roll)
 
 
     
