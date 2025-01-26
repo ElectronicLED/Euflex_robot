@@ -5,9 +5,6 @@ import time
 import math
 
 #ros topics
-
-# Publisher_name = rospy.Publisher('topic_name', msg_type, queue_size=5)
-
 # Angles publishers
 RAnkle_roll_pub = rospy.Publisher('/RAnkle_roll_position_controller/command', Float64, queue_size=5)
 RAnkle_pitch_pub= rospy.Publisher('/RAnkle_pitch_position_controller/command', Float64, queue_size=5)
@@ -241,15 +238,46 @@ while not rospy.is_shutdown():
         LAnkle_pitch_pub.publish(LAnkle_pitch)
 
 
-    rospy.loginfo(f"\nLeft hip: {LHip_pitch}\t\t\t\t\tRighthip:{RHip_pitch}\nLeft ankle{LAnkle_pitch}\t\tRight ankle{RAnkle_pitch}")
+    #rospy.loginfo(f"\nLeft hip: {LHip_pitch}\t\t\t\tRighthip:{RHip_pitch}\nLeft ankle{LAnkle_pitch}\t\tRight ankle{RAnkle_pitch}")
+
+    # Shifting the weight on top of the front leg
+    print("Moving weight forward")
+    time.sleep(3)
+    LAnkle_roll = 0.1
+    LHip_roll   = -LAnkle_roll
+    RAnkle_roll = LAnkle_roll
+    RHip_roll   = -RAnkle_roll
+
+    shift = 0.1
+    LHip_pitch  = LHip_pitch   - shift
+    LAnkle_pitch= LAnkle_pitch + shift
+    RHip_pitch  = RHip_pitch   + shift
+    RAnkle_pitch= RAnkle_pitch - shift
+
+
+    LAnkle_roll_pub.publish(LAnkle_roll)
+    LHip_roll_pub.publish(LHip_roll)
+    RAnkle_roll_pub.publish(RAnkle_roll)
+    RHip_roll_pub.publish(RHip_roll)
+
+    LHip_pitch_pub.publish(LHip_pitch)
+    RHip_pitch_pub.publish(RHip_pitch)
+    LAnkle_pitch_pub.publish(LAnkle_pitch)
+    RAnkle_pitch_pub.publish(RAnkle_pitch)
+
+
+
+
 
     # pushing the ground with front leg using
     # you guessed it INVERTED PENDELUM
-    LAnkle_pitch= float(input("LAnkle_pitch: "))
+    #LAnkle_pitch= float(input("LAnkle_pitch: "))
+    time.sleep(5)
+    LAnkle_pitch = 0.28
     LKnee_pitch = -0.016 * LAnkle_pitch**2 - 0.65
     LHip_pitch  = LAnkle_pitch + 0.167
 
-    LAnkle_roll = 0.0
+    LAnkle_roll = 0.1
     LHip_roll   = -LAnkle_roll
     RAnkle_roll = LAnkle_roll
     RHip_roll   = -RAnkle_roll 
@@ -262,33 +290,24 @@ while not rospy.is_shutdown():
         RAnkle_roll_pub.publish(RAnkle_roll)
         RHip_roll_pub.publish(RHip_roll)
 
-        time.sleep(0.5)
+        time.sleep(0.9)
         LHip_pitch_pub.publish(LHip_pitch)
         LKnee_pitch_pub.publish(LKnee_pitch)
         LAnkle_pitch_pub.publish(LAnkle_pitch)
+
+        neutralPosition()
+
+
+
+    
+
+
+
     
         
 
 
     
-
-
-
-   
-    
-    # time.sleep(5)
-    # # Shift the weight to the front leg
-    # print("shifting weight to other leg")
-    # LAnkle_roll = 0.17
-    # LHip_roll   = -LAnkle_roll 
-
-    # RAnkle_roll = LAnkle_roll
-    # RHip_roll   = -RAnkle_roll
-
-    # LAnkle_roll_pub.publish(LAnkle_roll)
-    # LHip_roll_pub.publish(LHip_roll)
-    # RAnkle_roll_pub.publish(RAnkle_roll)
-    # RHip_roll_pub.publish(RHip_roll)
 
 
     
