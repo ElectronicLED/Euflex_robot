@@ -97,5 +97,6 @@ For a deeper understanding of humanoid robots, consider exploring the following 
 
 - **Jessy W. Grizzle’s Lecture on Bipedal Robots**: [Watch here](https://www.youtube.com/watch?v=EMX7wc0vcWE)
 - **Introduction to Humanoid Robots** by Shuuji Kajita, Hirohisa Hirukawa, Kensuke Harada, and Kazuhito Yokoi.
+- **SLAM Course** by Cyrill Stachniss [here](https://www.youtube.com/playlist?list=PLgnQpQtFTOGQrZ4O5QzbIHgl3b1JHimN_).
 
 ---
