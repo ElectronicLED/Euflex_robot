@@ -166,7 +166,7 @@ while not rospy.is_shutdown():
 
     
     time.sleep(3)
-    print("inverted pendelum...")
+    print("Back leg inverted pendelum...")
     # 3- Time for our favourite inverted pendulum
     #RAnkle_pitch = float(input("RAnkle_pitch: "))#-0.55
     RAnkle_pitch = -0.55
@@ -192,7 +192,7 @@ while not rospy.is_shutdown():
 
 
 
-    print("lowering stepping leg")
+    print("Lowering stepping leg")
     # Third Experimental step is to lower the raised leg from the hip to begin the weight shift
     time.sleep(3)
     #RHip_roll = float(input("RHip_roll: ")) # 0.3
@@ -215,8 +215,8 @@ while not rospy.is_shutdown():
 
 
     # 5- more inverted pendulum
-    print("more inverted pendelum")
     time.sleep(5)
+    print("more back leg inverted pendelum")
     #RAnkle_pitch = float(input("RAnkle_pitch: "))#-0.65
     RAnkle_pitch = -0.68
     RKnee_pitch = -0.016 * RAnkle_pitch**2 + 0.65
@@ -241,14 +241,14 @@ while not rospy.is_shutdown():
     #rospy.loginfo(f"\nLeft hip: {LHip_pitch}\t\t\t\tRighthip:{RHip_pitch}\nLeft ankle{LAnkle_pitch}\t\tRight ankle{RAnkle_pitch}")
 
     # Shifting the weight on top of the front leg
+    time.sleep(4)
     print("Moving weight forward")
-    time.sleep(3)
     LAnkle_roll = 0.1
     LHip_roll   = -LAnkle_roll
     RAnkle_roll = LAnkle_roll
     RHip_roll   = -RAnkle_roll
 
-    shift = 0.1
+    shift = 0.17
     LHip_pitch  = LHip_pitch   - shift
     LAnkle_pitch= LAnkle_pitch + shift
     RHip_pitch  = RHip_pitch   + shift
@@ -273,14 +273,21 @@ while not rospy.is_shutdown():
     # you guessed it INVERTED PENDELUM
     #LAnkle_pitch= float(input("LAnkle_pitch: "))
     time.sleep(5)
-    LAnkle_pitch = 0.28
+    print("Front leg inverted pendulum")
+    LAnkle_pitch = 0.29
     LKnee_pitch = -0.016 * LAnkle_pitch**2 - 0.65
     LHip_pitch  = LAnkle_pitch + 0.167
 
-    LAnkle_roll = 0.1
+    LAnkle_roll = 0.17
     LHip_roll   = -LAnkle_roll
     RAnkle_roll = LAnkle_roll
     RHip_roll   = -RAnkle_roll 
+
+    # Moving the back leg forward
+    RHip_pitch = -0.8
+    RKnee_pitch = 1.57
+    RAnkle_pitch=-RKnee_pitch -RHip_pitch
+    print(RAnkle_pitch)
 
     if LAnkle_pitch == 0.0:
         LAnkle_pitch_pub.publish(0.233)
@@ -290,12 +297,20 @@ while not rospy.is_shutdown():
         RAnkle_roll_pub.publish(RAnkle_roll)
         RHip_roll_pub.publish(RHip_roll)
 
-        time.sleep(0.9)
+        time.sleep(3)
         LHip_pitch_pub.publish(LHip_pitch)
         LKnee_pitch_pub.publish(LKnee_pitch)
         LAnkle_pitch_pub.publish(LAnkle_pitch)
 
-        neutralPosition()
+        RHip_pitch_pub.publish(RHip_pitch)
+        RKnee_pitch_pub.publish(RKnee_pitch)
+        RAnkle_pitch_pub.publish(RAnkle_pitch)
+
+        time.sleep(4)
+        print("Resetting")
+        neutralPosition('LR')
+
+
 
 
 
