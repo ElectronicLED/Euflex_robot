@@ -139,13 +139,10 @@ while not rospy.is_shutdown():
 
     time.sleep(1)
     # 2- second step is to lift the leg that isnt holding the weight
-    '''LAnkle_pitch = float(input("LAnkle_pitch: "))#-0.2 rad
-    LKnee_pitch = -0.016 * LAnkle_pitch**2 - 0.65
-    LHip_pitch  = -3*LAnkle_pitch + 0.4'''
     #LHip_pitch = float(input("LHip_pitch: "))
     #LKnee_pitch = float(input("LKnee_pitch: "))
     print("Lifting leg..")
-    LHip_pitch = 0.2
+    LHip_pitch = LHip_pitch + 0.2
     LKnee_pitch = 0.2
     LAnkle_pitch = - LKnee_pitch - LHip_pitch
 
@@ -171,11 +168,12 @@ while not rospy.is_shutdown():
     #RAnkle_pitch = float(input("RAnkle_pitch: "))#-0.55
     RAnkle_pitch = -0.55
     RKnee_pitch = -0.016 * RAnkle_pitch**2 + 0.65
-    RHip_pitch = -0.1*RAnkle_pitch - 0.4
+    RHip_pitch = -0.1*RAnkle_pitch #- 0.4
 
     LHip_pitch = 0.2 - RHip_pitch
     LKnee_pitch = 0.2
-    LAnkle_pitch = - LKnee_pitch - LHip_pitch - LAnkle_pitch
+    # Solving the whole kinematic chain
+    LAnkle_pitch = - LKnee_pitch - LHip_pitch - RAnkle_pitch - RHip_pitch - RKnee_pitch
 
     if RAnkle_pitch == 0.0:
         RAnkle_pitch_pub.publish(-0.233)
@@ -192,9 +190,10 @@ while not rospy.is_shutdown():
 
 
 
-    print("Lowering stepping leg")
+    
     # Third Experimental step is to lower the raised leg from the hip to begin the weight shift
     time.sleep(3)
+    print("Lowering stepping leg")
     #RHip_roll = float(input("RHip_roll: ")) # 0.3
     RHip_roll = 0.3
 
@@ -220,11 +219,12 @@ while not rospy.is_shutdown():
     #RAnkle_pitch = float(input("RAnkle_pitch: "))#-0.65
     RAnkle_pitch = -0.68
     RKnee_pitch = -0.016 * RAnkle_pitch**2 + 0.65
-    RHip_pitch = -0.1*RAnkle_pitch - 0.4
+    RHip_pitch = -0.1*RAnkle_pitch #- 0.4
 
     LHip_pitch = 0.2 - RHip_pitch
     LKnee_pitch = 0.2
-    LAnkle_pitch = - LKnee_pitch - LHip_pitch - LAnkle_pitch
+    # Solving the whole kinematic chain
+    LAnkle_pitch = - LKnee_pitch - LHip_pitch - RAnkle_pitch - RHip_pitch - RKnee_pitch
 
     if RAnkle_pitch == 0.0:
         RAnkle_pitch_pub.publish(-0.233)
@@ -243,14 +243,16 @@ while not rospy.is_shutdown():
     # Shifting the weight on top of the front leg
     time.sleep(4)
     print("Moving weight forward")
-    LAnkle_roll = 0.1
+    LAnkle_roll = 0.17
     LHip_roll   = -LAnkle_roll
     RAnkle_roll = LAnkle_roll
     RHip_roll   = -RAnkle_roll
 
     shift = 0.17
-    LHip_pitch  = LHip_pitch   - shift
-    LAnkle_pitch= LAnkle_pitch + shift
+    LAnkle_pitch = 0.32
+    LKnee_pitch = -0.016 * LAnkle_pitch**2 - 0.65
+    LHip_pitch  = LAnkle_pitch #+ 0.167
+
     RHip_pitch  = RHip_pitch   + shift
     RAnkle_pitch= RAnkle_pitch - shift
 
@@ -259,6 +261,8 @@ while not rospy.is_shutdown():
     LHip_roll_pub.publish(LHip_roll)
     RAnkle_roll_pub.publish(RAnkle_roll)
     RHip_roll_pub.publish(RHip_roll)
+
+    LKnee_pitch_pub.publish(LKnee_pitch)
 
     LHip_pitch_pub.publish(LHip_pitch)
     RHip_pitch_pub.publish(RHip_pitch)
@@ -273,21 +277,19 @@ while not rospy.is_shutdown():
     # you guessed it INVERTED PENDELUM
     #LAnkle_pitch= float(input("LAnkle_pitch: "))
     time.sleep(5)
-    print("Front leg inverted pendulum")
-    LAnkle_pitch = 0.29
+    LAnkle_pitch = 0.32
     LKnee_pitch = -0.016 * LAnkle_pitch**2 - 0.65
-    LHip_pitch  = LAnkle_pitch + 0.167
+    LHip_pitch  = LAnkle_pitch #+ 0.167
 
     LAnkle_roll = 0.17
-    LHip_roll   = -LAnkle_roll
+    LHip_roll   = 0.0
     RAnkle_roll = LAnkle_roll
     RHip_roll   = -RAnkle_roll 
 
     # Moving the back leg forward
-    RHip_pitch = -0.8
+    RHip_pitch = -0.5
     RKnee_pitch = 1.57
-    RAnkle_pitch=-RKnee_pitch -RHip_pitch
-    print(RAnkle_pitch)
+    RAnkle_pitch=-RKnee_pitch -RHip_pitch - LAnkle_pitch - LHip_pitch - LKnee_pitch
 
     if LAnkle_pitch == 0.0:
         LAnkle_pitch_pub.publish(0.233)
@@ -298,13 +300,15 @@ while not rospy.is_shutdown():
         RHip_roll_pub.publish(RHip_roll)
 
         time.sleep(3)
+        print("Front leg inverted pendulum")
         LHip_pitch_pub.publish(LHip_pitch)
         LKnee_pitch_pub.publish(LKnee_pitch)
         LAnkle_pitch_pub.publish(LAnkle_pitch)
-
-        RHip_pitch_pub.publish(RHip_pitch)
+        # lifting the back leg
         RKnee_pitch_pub.publish(RKnee_pitch)
         RAnkle_pitch_pub.publish(RAnkle_pitch)
+        #time.sleep(1)
+        RHip_pitch_pub.publish(RHip_pitch)
 
         time.sleep(4)
         print("Resetting")
